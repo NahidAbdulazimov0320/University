@@ -12,47 +12,12 @@ public class Course {
 
     private String name;
     private int credit;
-    @OneToMany(mappedBy = "courses")
-    private List<Enrollment> enrollments;
 
-    public Course() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "programId")
+    private Program program;
 
-    public Course(Long id,String name, int credit) {
-        this.courseId =id;
-        this.name = name;
-        this.credit = credit;
-    }
+//    @OneToMany(mappedBy = "courses")
+//    private List<Enrollment> enrollments;
 
-    public Long getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getCredit() {
-        return credit;
-    }
-
-    public void setCredit(int credit) {
-        this.credit = credit;
-    }
-
-    public List<Enrollment> getEnrollments() {
-        return enrollments;
-    }
-
-    public void setEnrollments(List<Enrollment> enrollments) {
-        this.enrollments = enrollments;
-    }
 }

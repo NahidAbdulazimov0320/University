@@ -1,52 +1,33 @@
 //package com.demo.springboot.university.bootstap;
-//
 //import com.demo.springboot.university.entities.Course;
-//import com.demo.springboot.university.entities.Enrollment;
-//import com.demo.springboot.university.entities.Student;
-//import com.demo.springboot.university.repositories.CourseRepository;
-//import com.demo.springboot.university.repositories.EnrollmentRepository;
-//import com.demo.springboot.university.repositories.StudentRepository;
+//import com.demo.springboot.university.entities.Program;
+//import com.demo.springboot.university.repositories.ProgramRepository;
+//import com.demo.springboot.university.services.ProgramService;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.CommandLineRunner;
-//import org.springframework.context.annotation.ComponentScan;
-//import org.springframework.stereotype.Component;
 //
 //
 //
 //public class Bootstap implements CommandLineRunner {
-//    @Autowired
-//    private CourseRepository cr;
 //
-//    @Autowired
-//    private StudentRepository sr;
 //
-//    @Autowired
-//    private EnrollmentRepository er;
+//   private final ProgramRepository pr;
+//
+//    public Bootstap(ProgramRepository pr) {
+//        this.pr = pr;
+//    }
+//
 //
 //    @Override
 //    public void run(String... args) throws Exception {
 //
+//        Course course = new Course();
+//        Program program =  new Program();
+//
+//        pr.save(course);
 //
 //
 //
-//        //Long courseId, String name, int credit
-//       Course course = new Course("Calculus", 6);
-//        Course course1 = new Course("Math", 7);
-//        cr.save(course);
-//        cr.save(course1);
-//
-//        Student st = new Student("Elnar", "Ashrafov", 20);
-//        Student st1 = new Student("Elmin", "Aliyev", 25);
-//        sr.save(st);
-//        sr.save(st1);
-//
-//        Enrollment el = new Enrollment(st, course);
-//        Enrollment el1 = new Enrollment(st1, course);
-//        Enrollment el3 = new Enrollment(st1, course1);
-//
-//        er.save(el);
-//        er.save(el1);
-//        er.save(el3);
 //
 //
 //

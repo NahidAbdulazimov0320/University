@@ -8,21 +8,33 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Setter
 @Getter
+@Setter
 @Entity
-public class Student {
-
+public class University {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String surname;
-    private int age;
+    private LocalDateTime establishmentDate;
+    private String address;
+    private String contactDetails;
 
-//    private LocalDateTime enrolledDate;
 
-//
-//    @OneToMany(mappedBy = "students")
-//    private List<Enrollment> enrollments;
+
+    @OneToMany
+    private List<School> schools;
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

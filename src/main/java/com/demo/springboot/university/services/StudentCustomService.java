@@ -33,41 +33,51 @@ public class StudentCustomService implements StudentService  {
         sr.deleteById(id);
     }
 
+    @Override
+    public void update(Student student) {
+
+    }
+
+    @Override
+    public void patch(Student student) {
+
+    }
+
     public Optional<StudentDTO> getById(Long id) {
         return sr.findById(id).map(studentCustomDTOMapper);
 
     }
 
-    public void update(Student student) {
-        if (sr.existsById(student.getStudentId())) {
-            sr.save(student);
-        } else {
-            System.out.println("Student with this ID does not exist");
-        }
+//    public void update(Student student) {
+//        if (sr.existsById(student.getStudentId())) {
+//            sr.save(student);
+//        } else {
+//            System.out.println("Student with this ID does not exist");
+//        }
+//
+//    }
 
-    }
-
-    public void patch(Student student) {
-        Optional<Student> st = sr.findById(student.getStudentId());
-
-        if (st.isPresent()) {
-
-            if (student.getName() != null) {
-                st.get().setName(student.getName());
-            }
-
-            if (student.getSurname() != null) {
-                st.get().setSurname(student.getSurname());
-            }
-
-            if (student.getAge() != 0) {
-                st.get().setAge(student.getAge());
-            }
-
-            sr.save(st.get());
-        }
-
-    }
+//    public void patch(Student student) {
+//
+//
+//        if (st.isPresent()) {
+//
+//            if (student.getName() != null) {
+//                st.get().setName(student.getName());
+//            }
+//
+//            if (student.getSurname() != null) {
+//                st.get().setSurname(student.getSurname());
+//            }
+//
+//            if (student.getAge() != 0) {
+//                st.get().setAge(student.getAge());
+//            }
+//
+//            sr.save(st.get());
+//        }
+//
+//    }
 
     @Override
     public List<Student> findByAgeRange(int minAge, int maxAge) {
