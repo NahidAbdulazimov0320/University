@@ -1,6 +1,6 @@
-package com.demo.springboot.university.services;
+package com.demo.springboot.university.mappers;
 
-import com.demo.springboot.university.dto.StudentDTO;
+import com.demo.springboot.university.dto.StudentCustomDTO;
 import com.demo.springboot.university.entities.Student;
 import org.springframework.stereotype.Service;
 
@@ -8,10 +8,10 @@ import java.util.function.Function;
 
 
 @Service
-public class StudentDTOMapper implements Function<Student, StudentDTO> {
+public class StudentCustomDTOMapper implements Function<Student, StudentCustomDTO> {
     @Override
-    public StudentDTO apply(Student student) {
-        return new StudentDTO(
+    public StudentCustomDTO apply(Student student) {
+        return new StudentCustomDTO(
                 student.getName(),
                 student.getSurname(),
                 student.getAge()

@@ -1,47 +1,54 @@
 package com.demo.springboot.university.controllers;
 
 
+import com.demo.springboot.university.dto.StudentCustomDTO;
 import com.demo.springboot.university.dto.StudentDTO;
 import com.demo.springboot.university.entities.Student;
 import com.demo.springboot.university.services.StudentService;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/student")
 public class StudentController {
 
-    private final StudentService ss;
+    private final StudentService studentService;
 
     public StudentController(StudentService ss){
-        this.ss =ss;
+        this.studentService = ss;
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
+    //TODO nonoptional, 404 if not found
     public Optional<StudentDTO> getById(@PathVariable Long id){
-       return ss.getById(id);
+       return studentService.getById(id);
     }
 
-    @PostMapping("/save")
+    @PostMapping
+    //TODO return dto, consume dto instead of entity, use validations.
     public void save(@RequestBody Student student){
-        ss.save(student);
+        studentService.save(student);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/{id}")
+    //TODO return NO_CONTENT status, 404 if not found
     public void deleteById(@PathVariable Long id){
-        ss.deleteById(id);
+        studentService.deleteById(id);
     }
 
     @PutMapping("/update")
+    //TODO remove werbs from path, use id in path, consume and return dto,use validations
     public void update(@RequestBody Student student){
-        ss.update(student);
+        studentService.update(student);
     }
 
     @PatchMapping("/patch")
     public void patch(@RequestBody Student student){
-        ss.patch(student);
+        studentService.patch(student);
     }
 
-
+    //TODO implement getAll. return pageable, use dynamic filtering. Hint: use kaczmarzyk lib.
 }

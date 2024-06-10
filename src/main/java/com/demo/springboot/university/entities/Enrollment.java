@@ -23,10 +23,4 @@ public class Enrollment {
    @ManyToOne
    @JoinColumn(name = "course_id")
    private Course courses;
-
-   public Enrollment(Long id, Student student, Course course){
-       this.enrollmentId = id;
-       this.students = student;
-       this.courses = course;
-   }
 }
