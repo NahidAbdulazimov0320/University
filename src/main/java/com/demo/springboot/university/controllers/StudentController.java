@@ -1,14 +1,11 @@
 package com.demo.springboot.university.controllers;
 
 
-import com.demo.springboot.university.dto.StudentCustomDTO;
 import com.demo.springboot.university.dto.StudentDTO;
 import com.demo.springboot.university.entities.Student;
 import com.demo.springboot.university.services.StudentService;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -17,8 +14,8 @@ public class StudentController {
 
     private final StudentService studentService;
 
-    public StudentController(StudentService ss){
-        this.studentService = ss;
+    public StudentController(StudentService studentService){
+        this.studentService = studentService;
     }
 
     @GetMapping("/{id}")
@@ -32,6 +29,12 @@ public class StudentController {
     public void save(@RequestBody Student student){
         studentService.save(student);
     }
+
+    // Used DTO for saving
+//    @PostMapping
+//    public void save(@RequestBody StudentDTO studentDTO){
+//        studentService.save(studentDTO);
+//    }
 
     @DeleteMapping("/{id}")
     //TODO return NO_CONTENT status, 404 if not found
@@ -51,4 +54,9 @@ public class StudentController {
     }
 
     //TODO implement getAll. return pageable, use dynamic filtering. Hint: use kaczmarzyk lib.
+
+
+
+
+
 }

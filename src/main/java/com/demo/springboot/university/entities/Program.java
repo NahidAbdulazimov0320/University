@@ -12,12 +12,14 @@ public class Program {  // IT, CS, CE
     private String name;
 
     @ManyToOne
+    @JoinColumn(name = "school_id")
     private School school;
 
     @OneToMany(mappedBy = "program")
     private List<Course> courses;
 
-
+    @OneToMany(mappedBy = "program")
+    private List<Student> student;
 
 
 

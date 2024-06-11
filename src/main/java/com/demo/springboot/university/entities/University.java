@@ -16,22 +16,14 @@ public class University {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private LocalDateTime establishmentDate;
+    // private LocalDateTime establishmentDate;
     private String address;
     private String contactDetails;
 
 
 
-    @OneToMany
+    @OneToMany(mappedBy = "university")
     private List<School> schools;
-
-
-
-
-
-
-
-
 
 
 

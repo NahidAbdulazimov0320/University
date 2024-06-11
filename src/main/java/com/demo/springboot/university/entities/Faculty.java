@@ -23,6 +23,9 @@ public class Faculty {  // Professors
     private List<Program> program;
 
 
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    private School school;
 
 
 

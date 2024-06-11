@@ -10,16 +10,23 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class School {  //SITE, BAPA
+public class School {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany
-    List<Faculty> faculty;
+    private String name;
 
+    private String deanName;
 
+    @OneToMany(mappedBy = "school")
+    public List<Faculty> faculty;
 
+    @ManyToOne
+    @JoinColumn(name = "university_id")
+    private University university;
 
+    @OneToMany(mappedBy = "school")
+    private List<Program> program;
 
 }
