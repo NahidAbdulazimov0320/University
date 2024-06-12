@@ -1,6 +1,5 @@
 package com.demo.springboot.university.enums;
 
-import com.university.university.entity.Program;
 import lombok.Getter;
 
 import java.util.Set;

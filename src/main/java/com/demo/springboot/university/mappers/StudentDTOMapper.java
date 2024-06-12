@@ -13,6 +13,8 @@ public class StudentDTOMapper implements  Function<Student, StudentDTO> {
                 student.getName(),
                 student.getSurname(),
                   student.getAge()
+
+
           );
     }
 }

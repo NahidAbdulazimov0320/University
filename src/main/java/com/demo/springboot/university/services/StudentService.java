@@ -3,6 +3,7 @@ package com.demo.springboot.university.services;
 import com.demo.springboot.university.dto.StudentDTO;
 import com.demo.springboot.university.entities.Student;
 import com.demo.springboot.university.mappers.StudentDTOMapper;
+import com.demo.springboot.university.mappers.StudentMapper;
 import com.demo.springboot.university.repositories.StudentRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +18,13 @@ public class StudentService {
 
     private final StudentDTOMapper  studentDTOMapper;
 
+    private final StudentMapper studentMapper;
 
-    public StudentService(StudentRepository studentRepository, StudentDTOMapper studentDTOMapper){
+
+    public StudentService(StudentRepository studentRepository, StudentDTOMapper studentDTOMapper, StudentMapper studentMapper){
         this.studentRepository= studentRepository;
         this.studentDTOMapper = studentDTOMapper;
+        this.studentMapper = studentMapper;
     }
 
     // Used DTO for saving
@@ -43,15 +47,23 @@ public class StudentService {
 
 
 
+
+
     public void deleteById(Long id) {
         studentRepository.deleteById(id);
     }
 
 
-    public StudentDTO getById(Long id) {
-        return studentRepository.findById(id).map(studentDTOMapper).orElse(null);
+//    public StudentDTO getById(Long id) {
+//        return studentRepository.findById(id).map(studentDTOMapper).orElse(null);
+//
+//    }
 
+    public StudentDTO getById(Long id){
+        Student student = studentRepository.findById(id).orElse(null);
+        return studentMapper.studentToStudentDTO(student);
     }
+
 
     public void update(Student student) {
         if (studentRepository.existsById(student.getId())) {
