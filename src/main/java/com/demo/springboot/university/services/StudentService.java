@@ -43,8 +43,8 @@ public class StudentService {
     }
 
 
-    public Optional<StudentDTO> getById(Long id) {
-        return studentRepository.findById(id).map(studentDTOMapper);
+    public StudentDTO getById(Long id) {
+        return studentRepository.findById(id).map(studentDTOMapper).orElse(null);
 
     }
 

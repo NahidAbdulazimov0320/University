@@ -4,6 +4,8 @@ package com.demo.springboot.university.controllers;
 import com.demo.springboot.university.dto.StudentDTO;
 import com.demo.springboot.university.entities.Student;
 import com.demo.springboot.university.services.StudentService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -19,9 +21,11 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    //TODO nonoptional, 404 if not found
-    public Optional<StudentDTO> getById(@PathVariable Long id){
-       return studentService.getById(id);
+    public ResponseEntity<StudentDTO> getById(@PathVariable Long id){
+       if(studentService.getById(id) == null)
+           return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+       else
+           return new ResponseEntity<>(studentService.getById(id), HttpStatus.OK);
     }
 
     @PostMapping
