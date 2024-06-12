@@ -34,9 +34,14 @@ public class StudentService {
 //    }
 
 
-    public void save(Student student) {
-        studentRepository.save(student);
+
+
+    public void save(Student studentDTO) {
+        studentRepository.save(studentDTO);
     }
+
+
+
 
     public void deleteById(Long id) {
         studentRepository.deleteById(id);

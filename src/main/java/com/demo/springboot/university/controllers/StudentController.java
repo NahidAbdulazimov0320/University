@@ -28,10 +28,12 @@ public class StudentController {
            return new ResponseEntity<>(studentService.getById(id), HttpStatus.OK);
     }
 
-    @PostMappingg
-    //TODO return dto, consume dto instead of entity, use validations.
-    public void save(@RequestBody Student student){
-        studentService.save(student);
+
+    @PostMapping
+    //TODO use validations.
+    public ResponseEntity save(@RequestBody Student studentDTO){
+        studentService.save(studentDTO);
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
 
     // Used DTO for saving
