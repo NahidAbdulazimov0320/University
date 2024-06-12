@@ -2,7 +2,9 @@ package com.demo.springboot.university.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -20,6 +22,8 @@ public class Student {
     private Long id;
     private String name;
     private String surname;
+
+    @Min(value = 16, message = "More or equal to 16")
     private int age;
 
     @ManyToOne
